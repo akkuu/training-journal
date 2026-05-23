@@ -576,6 +576,26 @@ h1 .jp {
 
 .tip-box strong { color: var(--accent); }
 
+.yt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: #ff0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+
+.yt-link:hover { opacity: 0.85; }
+
+.yt-link svg { flex-shrink: 0; }
+
 .exercise-card {
   background: var(--bg);
   border: 1px solid var(--line);
@@ -711,6 +731,7 @@ const EXERCISES = [
     id: 'squat',
     name: 'スクワット',
     meta: '10回 × 2セット',
+    youtube: 'https://www.youtube.com/watch?v=SFnfYPktYBU',
     target: '下半身（太もも・お尻）',
     steps: [
       '足を肩幅に開き、つま先は少し外向き（15度くらい）',
@@ -732,6 +753,7 @@ const EXERCISES = [
     id: 'pushup',
     name: '膝つき腕立て伏せ',
     meta: '5〜10回 × 2セット',
+    youtube: 'https://www.youtube.com/watch?v=k4fsFKCp5iU',
     target: '胸・腕',
     steps: [
       '床に膝をつき、手は肩幅より少し広めに置く',
@@ -787,6 +809,7 @@ const EXERCISES = [
     id: 'crunch',
     name: 'クランチ',
     meta: '10回 × 2セット',
+    youtube: 'https://www.youtube.com/watch?v=OPeDVbIDcgg',
     target: 'お腹',
     steps: [
       '仰向けで膝を立てる',
@@ -1077,6 +1100,14 @@ function renderStrengthTab() {
           <div class="tip-box">
             <strong>💡 コツ：</strong>${ex.tip}
           </div>
+          ${ex.youtube ? `
+            <a class="yt-link" href="${ex.youtube}" target="_blank" rel="noopener">
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.582 2.186a2.506 2.506 0 0 0-1.763-1.773C16.254 0 10 0 10 0S3.746 0 2.181.413A2.506 2.506 0 0 0 .418 2.186C0 3.76 0 7 0 7s0 3.24.418 4.814a2.506 2.506 0 0 0 1.763 1.773C3.746 14 10 14 10 14s6.254 0 7.819-.413a2.506 2.506 0 0 0 1.763-1.773C20 10.24 20 7 20 7s0-3.24-.418-4.814zM8 10V4l5.2 3L8 10z"/>
+              </svg>
+              なかやまきんに君の解説動画を見る
+            </a>
+          ` : ''}
         </div>
       `).join('')}
     </div>
@@ -1226,6 +1257,14 @@ function showExerciseModal(exId) {
     <div class="tip-box">
       <strong>💡 コツ：</strong>${ex.tip}
     </div>
+    ${ex.youtube ? `
+      <a class="yt-link" href="${ex.youtube}" target="_blank" rel="noopener">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.582 2.186a2.506 2.506 0 0 0-1.763-1.773C16.254 0 10 0 10 0S3.746 0 2.181.413A2.506 2.506 0 0 0 .418 2.186C0 3.76 0 7 0 7s0 3.24.418 4.814a2.506 2.506 0 0 0 1.763 1.773C3.746 14 10 14 10 14s6.254 0 7.819-.413a2.506 2.506 0 0 0 1.763-1.773C20 10.24 20 7 20 7s0-3.24-.418-4.814zM8 10V4l5.2 3L8 10z"/>
+        </svg>
+        なかやまきんに君の解説動画を見る
+      </a>
+    ` : ''}
   `;
   document.getElementById('modal').classList.add('active');
 }
